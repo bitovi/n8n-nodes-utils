@@ -115,13 +115,10 @@ export class Utils implements INodeType {
 						const valid = validate(items[i].json);
 
 						if (!valid) {
-							const error = new NodeOperationError(
+							throw new NodeOperationError(
 								this.getNode(),
 								`Input data does not match schema: ${ajv.errorsText(validate.errors)}`,
 							);
-							set(error, 'node', this.getNode());
-
-							throw error;
 						}
 
 						returnData.push(items[i]);

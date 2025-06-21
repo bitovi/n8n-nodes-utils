@@ -6,6 +6,7 @@ import {
 	type INodeTypeDescription,
 } from 'n8n-workflow';
 import Ajv from 'ajv';
+import { set } from 'lodash';
 
 enum Action {
 	SKIP = 'skip',
@@ -109,16 +110,28 @@ export class Utils implements INodeType {
 
 					const ajv = new Ajv();
 					const validate = ajv.compile(schema);
-					const valid = validate(items[i].json);
 
-					if (!valid) {
-						throw new NodeOperationError(
-							this.getNode(),
-							`Input data does not match schema: ${ajv.errorsText(validate.errors)}`,
-						);
+					try {
+						const valid = validate(items[i].json);
+
+						if (!valid) {
+							const error = new NodeOperationError(
+								this.getNode(),
+								`Input data does not match schema: ${ajv.errorsText(validate.errors)}`,
+							);
+							set(error, 'node', this.getNode());
+
+							throw error;
+						}
+
+						returnData.push(items[i]);
+					} catch (error) {
+						if (!this.continueOnFail()) {
+							set(error, 'node', this.getNode());
+							throw error;
+						}
+						returnData.push({ json: { error: error.message } });
 					}
-
-					returnData.push(items[i]);
 
 					break;
 				}

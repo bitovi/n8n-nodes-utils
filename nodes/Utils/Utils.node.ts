@@ -118,6 +118,7 @@ export class Utils implements INodeType {
 							throw new NodeOperationError(
 								this.getNode(),
 								`Input data does not match schema: ${ajv.errorsText(validate.errors)}`,
+								{ itemIndex: i },
 							);
 						}
 
@@ -127,7 +128,7 @@ export class Utils implements INodeType {
 							set(error, 'node', this.getNode());
 							throw error;
 						}
-						returnData.push({ json: { error: error.message } });
+						returnData.push({ json: { error: error.message, errors: validate.errors }, error });
 					}
 
 					break;

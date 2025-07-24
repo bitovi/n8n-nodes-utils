@@ -37,7 +37,11 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "nodes": [
-      "dist/nodes/Utils/Utils.node.js"
+      "dist/nodes/JSONSchemaValidation/Jsonschemavalidation.node.js",
+      "dist/nodes/Regex/Regex.node.js",
+      "dist/nodes/Skip/Skip.node.js",
+      "dist/nodes/Utils/Utils.node.js",
+      "dist/nodes/Wikipedia/Wikipedia.node.js"
     ]
   },
   "devDependencies": {
@@ -55,6 +59,7 @@
   },
   "dependencies": {
     "ajv": "^8.17.1",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "wikipedia": "^2.1.2"
   }
 }

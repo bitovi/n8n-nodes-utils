@@ -128,7 +128,14 @@ export class Utils implements INodeType {
 							set(error, 'node', this.getNode());
 							throw error;
 						}
-						returnData.push({ json: { error: error.message, errors: validate.errors }, error });
+						returnData.push({
+							json: {
+								error: error.message,
+								errors: validate.errors,
+							},
+							pairedItem: i,
+							error,
+						});
 					}
 
 					break;

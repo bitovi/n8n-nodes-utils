@@ -8,7 +8,7 @@ import {
 import Ajv from 'ajv';
 import { set } from 'lodash';
 
-export class JSONSchemaValidation implements INodeType {
+export class Jsonschemavalidation implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'JSONSchema Validation',
 		icon: 'file:ajv.svg',

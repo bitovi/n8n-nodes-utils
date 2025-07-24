@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.JSONSchemaValidation",
+	"node": "n8n-nodes-base.Jsonschemavalidation",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Miscellaneous"],

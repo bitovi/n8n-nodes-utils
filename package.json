@@ -40,7 +40,6 @@
       "dist/nodes/JSONSchemaValidation/Jsonschemavalidation.node.js",
       "dist/nodes/Regex/Regex.node.js",
       "dist/nodes/Skip/Skip.node.js",
-      "dist/nodes/Utils/Utils.node.js",
       "dist/nodes/Wikipedia/Wikipedia.node.js"
     ]
   },

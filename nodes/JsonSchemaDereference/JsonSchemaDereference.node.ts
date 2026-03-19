@@ -9,7 +9,7 @@ import {
 import $RefParser from '@apidevtools/json-schema-ref-parser';
 import { set } from 'lodash';
 
-export class JSONSchemaDereference implements INodeType {
+export class JsonSchemaDereference implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'JSON Schema Dereference',
 		icon: 'fa:link',
